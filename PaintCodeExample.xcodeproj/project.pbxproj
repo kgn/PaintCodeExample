@@ -15,6 +15,7 @@
 		73915FE81519BA73005D4AA5 /* PCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73915FE71519BA73005D4AA5 /* PCAppDelegate.m */; };
 		73915FEB1519BA73005D4AA5 /* PCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73915FEA1519BA73005D4AA5 /* PCViewController.m */; };
 		73915FEE1519BA73005D4AA5 /* PCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73915FEC1519BA73005D4AA5 /* PCViewController.xib */; };
+		73915FF61519BB8C005D4AA5 /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +23,17 @@
 		73915FD71519BA72005D4AA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		73915FD91519BA72005D4AA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73915FDB1519BA72005D4AA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		73915FDF1519BA72005D4AA5 /* PaintCodeExample-Info.plist */ = {isa = PBXFileReference; path = "PaintCodeExample-Info.plist"; sourceTree = "<group>"; };
+		73915FDF1519BA72005D4AA5 /* PaintCodeExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PaintCodeExample-Info.plist"; sourceTree = "<group>"; };
 		73915FE11519BA72005D4AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		73915FE31519BA73005D4AA5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		73915FE51519BA73005D4AA5 /* PaintCodeExample-Prefix.pch */ = {isa = PBXFileReference; path = "PaintCodeExample-Prefix.pch"; sourceTree = "<group>"; };
-		73915FE61519BA73005D4AA5 /* PCAppDelegate.h */ = {isa = PBXFileReference; path = PCAppDelegate.h; sourceTree = "<group>"; };
+		73915FE51519BA73005D4AA5 /* PaintCodeExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaintCodeExample-Prefix.pch"; sourceTree = "<group>"; };
+		73915FE61519BA73005D4AA5 /* PCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCAppDelegate.h; sourceTree = "<group>"; };
 		73915FE71519BA73005D4AA5 /* PCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCAppDelegate.m; sourceTree = "<group>"; };
-		73915FE91519BA73005D4AA5 /* PCViewController.h */ = {isa = PBXFileReference; path = PCViewController.h; sourceTree = "<group>"; };
+		73915FE91519BA73005D4AA5 /* PCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCViewController.h; sourceTree = "<group>"; };
 		73915FEA1519BA73005D4AA5 /* PCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCViewController.m; sourceTree = "<group>"; };
 		73915FED1519BA73005D4AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PCViewController.xib; sourceTree = "<group>"; };
+		73915FF41519BB8C005D4AA5 /* UIImage+BBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+BBlock.h"; path = "BBlock/UIImage+BBlock.h"; sourceTree = SOURCE_ROOT; };
+		73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+BBlock.m"; path = "BBlock/UIImage+BBlock.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				73915FE91519BA73005D4AA5 /* PCViewController.h */,
 				73915FEA1519BA73005D4AA5 /* PCViewController.m */,
 				73915FEC1519BA73005D4AA5 /* PCViewController.xib */,
+				73915FF41519BB8C005D4AA5 /* UIImage+BBlock.h */,
+				73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */,
 				73915FDE1519BA72005D4AA5 /* Supporting Files */,
 			);
 			path = PaintCodeExample;
@@ -126,6 +131,7 @@
 			attributes = {
 				CLASSPREFIX = PC;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "David Keegan";
 			};
 			buildConfigurationList = 73915FCD1519BA72005D4AA5 /* Build configuration list for PBXProject "PaintCodeExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -164,6 +170,7 @@
 				73915FE41519BA73005D4AA5 /* main.m in Sources */,
 				73915FE81519BA73005D4AA5 /* PCAppDelegate.m in Sources */,
 				73915FEB1519BA73005D4AA5 /* PCViewController.m in Sources */,
+				73915FF61519BB8C005D4AA5 /* UIImage+BBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
