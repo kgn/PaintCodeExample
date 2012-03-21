@@ -17,3 +17,10 @@
 - (IBAction)showPopup:(id)sender;
 
 @end
+
+
+@interface PCViewController(PaintCode)
+- (UIImage *)popupImage;
+- (UIImage *)debutsImage;
+- (UIImage *)debutsHighlightedImage;
+@end

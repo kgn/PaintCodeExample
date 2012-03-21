@@ -16,6 +16,7 @@
 		73915FEB1519BA73005D4AA5 /* PCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73915FEA1519BA73005D4AA5 /* PCViewController.m */; };
 		73915FEE1519BA73005D4AA5 /* PCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73915FEC1519BA73005D4AA5 /* PCViewController.xib */; };
 		73915FF61519BB8C005D4AA5 /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */; };
+		739160111519CC68005D4AA5 /* PCViewController+PaintCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 739160101519CC68005D4AA5 /* PCViewController+PaintCode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		73915FED1519BA73005D4AA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PCViewController.xib; sourceTree = "<group>"; };
 		73915FF41519BB8C005D4AA5 /* UIImage+BBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+BBlock.h"; path = "BBlock/UIImage+BBlock.h"; sourceTree = SOURCE_ROOT; };
 		73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+BBlock.m"; path = "BBlock/UIImage+BBlock.m"; sourceTree = SOURCE_ROOT; };
+		739160101519CC68005D4AA5 /* PCViewController+PaintCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PCViewController+PaintCode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				73915FE71519BA73005D4AA5 /* PCAppDelegate.m */,
 				73915FE91519BA73005D4AA5 /* PCViewController.h */,
 				73915FEA1519BA73005D4AA5 /* PCViewController.m */,
+				739160101519CC68005D4AA5 /* PCViewController+PaintCode.m */,
 				73915FEC1519BA73005D4AA5 /* PCViewController.xib */,
 				73915FF41519BB8C005D4AA5 /* UIImage+BBlock.h */,
 				73915FF51519BB8C005D4AA5 /* UIImage+BBlock.m */,
@@ -171,6 +174,7 @@
 				73915FE81519BA73005D4AA5 /* PCAppDelegate.m in Sources */,
 				73915FEB1519BA73005D4AA5 /* PCViewController.m in Sources */,
 				73915FF61519BB8C005D4AA5 /* UIImage+BBlock.m in Sources */,
+				739160111519CC68005D4AA5 /* PCViewController+PaintCode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +286,7 @@
 				73915FF31519BA73005D4AA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
