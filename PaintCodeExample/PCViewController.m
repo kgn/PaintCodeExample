@@ -11,19 +11,137 @@
 
 @interface PCViewController()
 
+- (UIImage *)popupImage;
 - (UIImage *)debutsImage;
 - (UIImage *)debutsHighlightedImage;
 
 @end
 
-@implementation PCViewController
+@implementation PCViewController{
+    CGRect _popupBaseRect;
+}
 
+@synthesize popupImageView;
 @synthesize debutsButton;
+@synthesize popupContainerView;
+
+- (IBAction)showPopup:(id)sender{
+    NSTimeInterval time = 0.25;
+    [UIView 
+     animateWithDuration:time
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseIn
+     animations:^{
+         self.popupContainerView.alpha = 1.0;
+         CGRect newRect = _popupBaseRect;
+         newRect.origin.y -= 10;
+         self.popupContainerView.frame = newRect;
+     }
+     completion:^(BOOL finished){
+         [UIView 
+          animateWithDuration:time
+          delay:2.0
+          options:UIViewAnimationOptionCurveEaseIn
+          animations:^{
+              self.popupContainerView.alpha = 0.0;
+              self.popupContainerView.frame = _popupBaseRect;
+          }
+          completion:nil];            
+     }];    
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.popupContainerView.alpha = 0.0f;
+    _popupBaseRect = self.popupContainerView.frame;
+    [self.popupImageView setImage:[self popupImage]];    
+    
     [self.debutsButton setImage:[self debutsImage] forState:UIControlStateNormal];
     [self.debutsButton setImage:[self debutsHighlightedImage] forState:UIControlStateHighlighted];    
+}
+
+- (UIImage *)popupImage{
+    return [UIImage imageForSize:CGSizeMake(120, 60) withDrawingBlock:^{
+        //// General Declarations
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        //// Gradient Declarations
+        NSArray* highlightColors = [NSArray arrayWithObjects: 
+                                    (id)[UIColor blackColor].CGColor, 
+                                    (id)[UIColor colorWithRed: 0.17 green: 0.17 blue: 0.17 alpha: 1].CGColor, 
+                                    (id)[UIColor darkGrayColor].CGColor, nil];
+        CGFloat highlightLocations[] = {0.5, 0.79, 1};
+        CGGradientRef highlight = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)highlightColors, highlightLocations);
+        
+        //// Shadow Declarations
+        CGColorRef outer = [UIColor blackColor].CGColor;
+        CGSize outerOffset = CGSizeMake(0, 1);
+        CGFloat outerBlurRadius = 3;
+        CGColorRef inner = [UIColor whiteColor].CGColor;
+        CGSize innerOffset = CGSizeMake(0, -0);
+        CGFloat innerBlurRadius = 2;
+        
+        
+        //// popup Drawing
+        UIBezierPath* popupPath = [UIBezierPath bezierPath];
+        [popupPath moveToPoint: CGPointMake(53.53, 44.52)];
+        [popupPath addLineToPoint: CGPointMake(20.5, 44.5)];
+        [popupPath addCurveToPoint: CGPointMake(16.5, 40.5) controlPoint1: CGPointMake(18.29, 44.5) controlPoint2: CGPointMake(16.5, 42.71)];
+        [popupPath addLineToPoint: CGPointMake(16.5, 14.5)];
+        [popupPath addCurveToPoint: CGPointMake(20.5, 10.5) controlPoint1: CGPointMake(16.5, 12.29) controlPoint2: CGPointMake(18.29, 10.5)];
+        [popupPath addLineToPoint: CGPointMake(98.5, 10.5)];
+        [popupPath addCurveToPoint: CGPointMake(102.5, 14.5) controlPoint1: CGPointMake(100.71, 10.5) controlPoint2: CGPointMake(102.5, 12.29)];
+        [popupPath addLineToPoint: CGPointMake(102.5, 40.5)];
+        [popupPath addCurveToPoint: CGPointMake(98.5, 44.5) controlPoint1: CGPointMake(102.5, 42.71) controlPoint2: CGPointMake(100.71, 44.5)];
+        [popupPath addLineToPoint: CGPointMake(64.55, 44.5)];
+        [popupPath addLineToPoint: CGPointMake(59, 48.5)];
+        [popupPath addLineToPoint: CGPointMake(53.53, 44.52)];
+        [popupPath closePath];
+        CGContextSaveGState(context);
+        CGContextSetShadowWithColor(context, outerOffset, outerBlurRadius, outer);
+        CGContextSetFillColorWithColor(context, outer);
+        [popupPath fill];
+        [popupPath addClip];
+        CGContextDrawLinearGradient(context, highlight, CGPointMake(59.5, 48.5), CGPointMake(59.5, 10.5), 0);
+        
+        ////// popup Inner Shadow
+        CGRect popupBorderRect = CGRectInset([popupPath bounds], -innerBlurRadius, -innerBlurRadius);
+        popupBorderRect = CGRectOffset(popupBorderRect, -innerOffset.width, -innerOffset.height);
+        popupBorderRect = CGRectInset(CGRectUnion(popupBorderRect, [popupPath bounds]), -1, -1);
+        
+        UIBezierPath* popupNegativePath = [UIBezierPath bezierPathWithRect: popupBorderRect];
+        [popupNegativePath appendPath: popupPath];
+        popupNegativePath.usesEvenOddFillRule = YES;
+        
+        CGContextSaveGState(context);
+        {
+            CGFloat xOffset = innerOffset.width + round(popupBorderRect.size.width);
+            CGFloat yOffset = innerOffset.height;
+            CGContextSetShadowWithColor(context,
+                                        CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
+                                        innerBlurRadius,
+                                        inner);
+            
+            [popupPath addClip];
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(popupBorderRect.size.width), 0);
+            [popupNegativePath applyTransform: transform];
+            [[UIColor grayColor] setFill];
+            [popupNegativePath fill];
+        }
+        CGContextRestoreGState(context);
+        
+        CGContextRestoreGState(context);
+        
+        [[UIColor blackColor] setStroke];
+        popupPath.lineWidth = 1;
+        [popupPath stroke];
+        
+        //// Cleanup
+        CGGradientRelease(highlight);
+        CGColorSpaceRelease(colorSpace);    
+    }];
 }
 
 - (UIImage *)debutsImage{
@@ -629,6 +747,12 @@
         CGGradientRelease(mainGradient);
         CGColorSpaceRelease(colorSpace);
     }];    
+}
+
+- (void)viewDidUnload {
+    [self setPopupImageView:nil];
+    [self setPopupContainerView:nil];
+    [super viewDidUnload];
 }
 
 @end

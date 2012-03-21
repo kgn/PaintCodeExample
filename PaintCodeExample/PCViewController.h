@@ -10,6 +10,10 @@
 
 @interface PCViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *popupImageView;
 @property (weak, nonatomic) IBOutlet UIButton *debutsButton;
+@property (weak, nonatomic) IBOutlet UIView *popupContainerView;
+
+- (IBAction)showPopup:(id)sender;
 
 @end
