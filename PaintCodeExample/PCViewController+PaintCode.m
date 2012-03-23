@@ -9,7 +9,7 @@
 #import "PCViewController.h"
 #import "UIImage+BBlock.h"
 
-@implementation PCViewController (PaintCode)
+@implementation PCViewController(PaintCode)
 
 - (UIImage *)popupImage{
     static UIImage *image = nil;
