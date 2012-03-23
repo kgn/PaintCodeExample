@@ -21,7 +21,7 @@
     [UIView 
      animateWithDuration:time
      delay:0.0
-     options:UIViewAnimationOptionCurveEaseIn
+     options:UIViewAnimationOptionCurveEaseInOut
      animations:^{
          self.popupContainerView.alpha = 1.0;
          CGRect newRect = _popupBaseRect;
@@ -32,7 +32,7 @@
          [UIView 
           animateWithDuration:time
           delay:2.0
-          options:UIViewAnimationOptionCurveEaseIn
+          options:UIViewAnimationOptionCurveEaseInOut
           animations:^{
               self.popupContainerView.alpha = 0.0;
               self.popupContainerView.frame = _popupBaseRect;
