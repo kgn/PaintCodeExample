@@ -335,8 +335,7 @@
 - (UIImage *)debutsHighlightedImage{
     static UIImage *image = nil;
     if(image == nil){
-        CGSize imageSize = CGSizeMake(42, 42);
-        image = [UIImage imageForSize:imageSize withDrawingBlock:^{
+        image = [UIImage imageForSize:CGSizeMake(42, 42) withDrawingBlock:^{
             //// General Declarations
             CGContextRef context = UIGraphicsGetCurrentContext();
             
@@ -488,9 +487,7 @@
             CGContextRestoreGState(context);
             
             // Draw the debuts image ontop of the glow
-            CGRect imageRect = CGRectZero;
-            imageRect.size = imageSize;
-            [[self debutsImage] drawInRect:imageRect];
+            [[self debutsImage] drawAtPoint:CGPointZero];
         }]; 
     }
     return image;
