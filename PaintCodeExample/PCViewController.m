@@ -7,12 +7,12 @@
 //
 
 #import "PCViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation PCViewController{
     CGRect _popupBaseRect;
 }
 
-@synthesize popupImageView;
 @synthesize debutsButton;
 @synthesize popupContainerView;
 
@@ -46,14 +46,13 @@
     
     self.popupContainerView.alpha = 0.0f;
     _popupBaseRect = self.popupContainerView.frame;
-    [self.popupImageView setImage:[self popupImage]];    
+    self.popupContainerView.layer.contents = (id)[[self popupImage] CGImage];
     
     [self.debutsButton setImage:[self debutsImage] forState:UIControlStateNormal];
     [self.debutsButton setImage:[self debutsHighlightedImage] forState:UIControlStateHighlighted];    
 }
 
 - (void)viewDidUnload {
-    [self setPopupImageView:nil];
     [self setPopupContainerView:nil];
     [super viewDidUnload];
 }
