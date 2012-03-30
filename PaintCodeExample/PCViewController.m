@@ -15,7 +15,6 @@
 @synthesize popupImageView;
 @synthesize debutsButton;
 @synthesize popupContainerView;
-@synthesize paintCodeCache;
 
 - (IBAction)showPopup:(id)sender{
     NSTimeInterval time = 0.25;
@@ -44,8 +43,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.paintCodeCache = [[NSCache alloc] init];
     
     self.popupContainerView.alpha = 0.0f;
     _popupBaseRect = self.popupContainerView.frame;
