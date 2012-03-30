@@ -12,7 +12,8 @@
 @implementation PCViewController(PaintCode)
 
 - (UIImage *)popupImage{
-    static UIImage *image = nil;
+    NSString *cacheKey = @"popupImage";
+    UIImage *image = [self.paintCodeCache objectForKey:cacheKey];
     if(image == nil){
         image = [UIImage imageForSize:CGSizeMake(120, 60) withDrawingBlock:^{
             //// General Declarations
@@ -94,12 +95,14 @@
             CGGradientRelease(highlight);
             CGColorSpaceRelease(colorSpace);    
         }];
+        [self.paintCodeCache setObject:image forKey:cacheKey];
     }
     return image;
 }
 
 - (UIImage *)debutsImage{
-    static UIImage *image = nil;
+    NSString *cacheKey = @"debutsImage";
+    UIImage *image = [self.paintCodeCache objectForKey:cacheKey];
     if(image == nil){
         image = [UIImage imageForSize:CGSizeMake(42, 42) withDrawingBlock:^{
             //// General Declarations
@@ -328,12 +331,14 @@
             CGGradientRelease(mainGradient);
             CGColorSpaceRelease(colorSpace);
         }];
+        [self.paintCodeCache setObject:image forKey:cacheKey];        
     }
     return image;
 }
 
 - (UIImage *)debutsHighlightedImage{
-    static UIImage *image = nil;
+    NSString *cacheKey = @"debutsHighlightedImage";
+    UIImage *image = [self.paintCodeCache objectForKey:cacheKey];
     if(image == nil){
         image = [UIImage imageForSize:CGSizeMake(42, 42) withDrawingBlock:^{
             //// General Declarations
@@ -489,6 +494,7 @@
             // Draw the debuts image ontop of the glow
             [[self debutsImage] drawAtPoint:CGPointZero];
         }]; 
+        [self.paintCodeCache setObject:image forKey:cacheKey];        
     }
     return image;
 }
