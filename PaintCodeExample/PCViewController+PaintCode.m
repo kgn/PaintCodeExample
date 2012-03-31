@@ -12,7 +12,7 @@
 @implementation PCViewController(PaintCode)
 
 - (UIImage *)popupImage{
-    return [UIImage imageNamed:@"popupImage" forSize:CGSizeMake(120, 60) andDrawingBlock:^{
+    return [UIImage imageWithIdentifier:@"popupImage" forSize:CGSizeMake(120, 60) andDrawingBlock:^{
         //// General Declarations
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -95,7 +95,7 @@
 }
 
 - (UIImage *)debutsImage{
-    return [UIImage imageNamed:@"debutsImage" forSize:CGSizeMake(42, 42) andDrawingBlock:^{
+    return [UIImage imageWithIdentifier:@"debutsImage" forSize:CGSizeMake(42, 42) andDrawingBlock:^{
         //// General Declarations
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -325,7 +325,7 @@
 }
 
 - (UIImage *)debutsHighlightedImage{
-    return [UIImage imageNamed:@"debutsHighlightedImage" forSize:CGSizeMake(42, 42) andDrawingBlock:^{
+    return [UIImage imageWithIdentifier:@"debutsHighlightedImage" forSize:CGSizeMake(42, 42) andDrawingBlock:^{
         //// General Declarations
         CGContextRef context = UIGraphicsGetCurrentContext();
         
